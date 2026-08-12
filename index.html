@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08090d">
+
+<title>Teléfono perdido</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #050609;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lock-screen {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  padding: 35px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  background:
+    radial-gradient(circle at top, #252936 0%, #0b0d12 45%, #050609 100%);
+}
+
+.top {
+  margin-top: 20px;
+}
+
+.time {
+  font-size: 64px;
+  font-weight: 300;
+  letter-spacing: -3px;
+}
+
+.date {
+  margin-top: 5px;
+  color: #b8bcc7;
+  font-size: 17px;
+}
+
+.warning {
+  margin-top: 45px;
+}
+
+.phone-icon {
+  width: 75px;
+  height: 75px;
+  margin: auto;
+  border: 2px solid #ff453a;
+  border-radius: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 37px;
+  box-shadow: 0 0 30px rgba(255,69,58,.2);
+}
+
+h1 {
+  margin: 22px 0 8px;
+  font-size: 30px;
+}
+
+.alert {
+  display: inline-block;
+  margin: 8px 0 20px;
+  padding: 8px 18px;
+  border-radius: 30px;
+  background: #ff453a;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.message {
+  color: #c5c8d0;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.device {
+  margin: 25px auto;
+  padding: 15px;
+  max-width: 330px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+}
+
+.device-title {
+  color: #8f95a3;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.device-name {
+  margin-top: 6px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.contact {
+  margin-top: 15px;
+}
+
+.contact p {
+  color: #aeb2bd;
+  font-size: 14px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  margin: 10px 0;
+  border-radius: 15px;
+  text-decoration: none;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.call {
+  background: #3478f6;
+}
+
+.whatsapp {
+  background: #20c767;
+}
+
+.footer {
+  color: #747985;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="lock-screen">
+
+  <div class="top">
+
+    <div class="time" id="time">11:53</div>
+
+    <div class="date" id="date">
+      Teléfono perdido
+    </div>
+
+    <div class="warning">
+
+      <div class="phone-icon">
+        📱
+      </div>
+
+      <h1>Teléfono perdido</h1>
+
+      <div class="alert">
+        ⚠️ DISPOSITIVO REPORTADO
+      </div>
+
+      <div class="message">
+        Este teléfono pertenece a su propietario.
+        Si lo encontraste, por favor ayúdalo a recuperarlo.
+      </div>
+
+      <div class="device">
+
+        <div class="device-title">
+          Dispositivo
+        </div>
+
+        <!-- CAMBIA EL MODELO AQUÍ -->
+        <div class="device-name">
+          MI TELÉFONO ANDROID
+        </div>
+
+      </div>
+
+      <div class="contact">
+
+        <p>
+          Si tienes este dispositivo, puedes contactar
+          directamente con el propietario.
+        </p>
+
+        <div class="buttons">
+
+          <!-- CAMBIA EL NÚMERO POR EL TUYO -->
+          <a class="button call"
+             href="tel:+504XXXXXXXX">
+            📞 Llamar al propietario
+          </a>
+
+          <!-- CAMBIA EL NÚMERO POR EL TUYO -->
+          <a class="button whatsapp"
+             href="https://wa.me/504XXXXXXXX?text=Hola%2C%20encontr%C3%A9%20tu%20tel%C3%A9fono">
+            💬 WhatsApp
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Gracias por ayudar a devolver este dispositivo.<br>
+    No se recopilan datos personales mediante esta página.
+  </div>
+
+</div>
+
+<script>
+function actualizarHora() {
+
+  const ahora = new Date();
+
+  let horas = ahora.getHours();
+  let minutos = ahora.getMinutes();
+
+  horas = horas.toString().padStart(2, "0");
+  minutos = minutos.toString().padStart(2, "0");
+
+  document.getElementById("time").textContent =
+    horas + ":" + minutos;
+
+  const opciones = {
+    weekday: "long",
+    day: "numeric",
+    month: "long"
+  };
+
+  document.getElementById("date").textContent =
+    ahora.toLocaleDateString("es-ES", opciones);
+}
+
+actualizarHora();
+setInterval(actualizarHora, 1000);
+</script>
+
+</body>
+</html>
